@@ -126,10 +126,13 @@
                     </section>
                 </div>
             </div>
-            
-            
+
+            <!-- Section: Companion deck (sekuel/prekuel) — hanya untuk pasangan kartu
+                 yang ditulis manual di composables/cards/related.ts -->
+            <ProductPairBanner :slug="product?.slug" />
+
             <!-- Section: Spotify -->
-            <section v-if="product?.link_spotify" class="relative isolate overflow-hidden bg-gray-800 px-6 sm:pt-10 sm:pb-12 lg:px-8">
+            <section v-if="product?.link_spotify" class="relative isolate mt-12 overflow-hidden bg-gray-800 px-6 sm:pt-10 sm:pb-12 lg:px-8">
                 <div class="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,#008989,transparent)] opacity-20"></div>
                 <div class="absolute inset-y-0 right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-gray-900 shadow-xl ring-1 shadow-teal-500/5 ring-white/5 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center"></div>
                 <div class="mx-auto max-w-2xl lg:max-w-4xl">
@@ -163,6 +166,9 @@
                 :rating="deckMeta?.rating"
                 :rating-count="deckMeta?.rating_count"
             />
+
+            <!-- Section: Rekomendasi kartu lain (berdasarkan kemiripan occasion & tags) -->
+            <ProductRelated :slug="product?.slug" />
         </div>
     </div>
 

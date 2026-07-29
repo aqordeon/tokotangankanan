@@ -1,4 +1,5 @@
 import ProductDescriptionBadboy from "../../components/Product/ProductDescriptionBadboy.vue";
+import ProductDescriptionBeraniGak from "../../components/Product/ProductDescriptionBeraniGak.vue";
 import ProductDescriptionDeep from "../../components/Product/ProductDescriptionDeep.vue";
 import ProductDescriptionF99 from "../../components/Product/ProductDescriptionF99.vue";
 import ProductDescriptionHangout from "../../components/Product/ProductDescriptionHangout.vue";
@@ -292,6 +293,33 @@ export const useDecksLP = {
                 alt: 'Screenshot ulasan kartu Family di Shopee pembeli 9',
             },
         ],
+    },
+    "berani-gak": {
+        name: `Berani Gak?`,
+        title: `Kartu Berani Gak? - Truth and Dare dalam Satu Kartu untuk Nongkrong Bareng Sirkel`,
+        meta: {
+            title: 'Kartu Berani Gak? - Truth and Dare dalam Satu Kartu',
+            description: 'Kartu Berani Gak? - bukan truth or dare, tapi truth dan dare sekaligus dalam satu kartu. 50 tantangan yang bikin nongkrong makin seru. Berani coba? '
+        },
+        slug: `berani-gak`,
+        // Harga belum dikonfirmasi — dibiarkan null supaya blok harga dan
+        // schema.org Offer tidak tampil sampai angka aslinya diisi.
+        price: null,
+        description: null,
+        descriptionComponent: ProductDescriptionBeraniGak,
+        img_logo: '/images/logo/beranigak_logo.png',
+        href: '/cards/berani-gak',
+        images: [
+            {
+                src: "/images/cards/bg1-4x5.webp",
+                alt: "Kemasan kartu Berani Gak? beserta contoh kartu tantangan - permainan truth and dare dalam satu kartu untuk nongkrong bareng teman"
+            },
+        ],
+        link_olshop: getShopLinks('berani-gak'),
+        link_spotify: null,
+        // Belum ada testimoni yang dikumpulkan untuk varian ini.
+        reviews: [],
+        review_images: [],
     },
     badboy: {
         name: `Badboy`,

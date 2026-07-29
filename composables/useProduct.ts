@@ -77,7 +77,7 @@ export const decks = [
     },
     {
         slug: 'berani-gak',
-        has_landing_page: false,
+        has_landing_page: true,
         title: 'Berani Gak?',
         sku: 'ttk-c-bg-1',
         rating: 4.9,
