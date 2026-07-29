@@ -425,6 +425,14 @@ export const useDecksLP = {
                 src: "/images/cards/love_sparks_3.jpg",
                 alt: "Kemasan kartu Love Sparks berwarna pink dengan contoh kartu pertanyaan – cocok untuk pasangan yang ingin mempererat koneksi emosional"
             },
+            {
+                src: "/images/cards/love_sparks_4.webp",
+                alt: "Tiga keutamaan dan alasan untuk bermain Love Sparks"
+            },
+            {
+                src: "/images/cards/love_sparks_5.webp",
+                alt: "Kemasan Love Sparks yang premium"
+            },
         ],
         link_olshop: getShopLinks('love_sparks'),
         link_spotify: "https://open.spotify.com/embed/playlist/29gNjlJTZcsbLTw8PF78Ad?utm_source=generator",
