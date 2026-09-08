@@ -109,6 +109,12 @@ export default defineNuxtConfig({
         }
     },
     ssr: true,
+    routeRules: {
+        // /about hanya berisi placeholder maintenance dan menduplikasi peran
+        // /tentang-kami. Diarahkan permanen supaya seluruh sinyal halaman
+        // "tentang brand" menumpuk di satu URL, bukan terpecah dua.
+        '/about': { redirect: { to: '/tentang-kami', statusCode: 301 } },
+    },
     supabase: {
         redirect: false
     },

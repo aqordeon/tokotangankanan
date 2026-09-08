@@ -11,7 +11,11 @@
                 <h1 class="text-balance text-3xl md:text-5xl font-semibold tracking-tight">
                     Satu kartu, ciptakan momen berkesan.
                 </h1>
+                <!-- Kalimat pembuka sengaja berbentuk definisi ("X adalah Y"):
+                     itu bentuk yang paling gampang dikutip mesin pencari dan AI
+                     Overview saat menjawab "apa itu Toko Tangan Kanan". -->
                 <p class="mt-4 md:mt-8 text-pretty text-xs md:text-lg md:font-medium text-gray-500">
+                    <strong class="font-semibold text-gray-600">Toko Tangan Kanan</strong> adalah brand permainan kartu percakapan asal Indonesia.
                     Satu kartu bisa jadi awal obrolan yang seru, dekatin yang jauh, atau bikin nongkrong makin pecah. Banyak varian untuk semua momenmu.
                 </p>
                 <div class="mt-6 md:mt-10 flex items-center justify-center gap-3">

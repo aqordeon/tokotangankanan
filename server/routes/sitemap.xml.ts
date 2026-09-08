@@ -19,7 +19,20 @@ type SitemapUrl = { loc: string; changefreq: string; priority: string }
 const staticRoutes: SitemapUrl[] = [
     { loc: '/', changefreq: 'weekly', priority: '1.0' },
     { loc: '/cards', changefreq: 'weekly', priority: '0.9' },
+    // Halaman identitas brand. Keduanya membawa JSON-LD yang menunjuk ke node
+    // Organization, jadi justru halaman inilah yang paling perlu dirayapi saat
+    // Google menentukan entitas mana yang dimaksud "toko tangan kanan".
+    { loc: '/tentang-kami', changefreq: 'monthly', priority: '0.8' },
     { loc: '/faq', changefreq: 'monthly', priority: '0.7' },
+    { loc: '/tempat-main', changefreq: 'monthly', priority: '0.7' },
+    { loc: '/blog', changefreq: 'weekly', priority: '0.7' },
+]
+
+// Slug artikel blog ditulis manual karena alasan yang sama dengan decks_lp:
+// composables/blog/posts.ts mengimpor komponen .vue, yang tidak bisa dibundel
+// Nitro. Tambahkan entri di sini setiap kali menerbitkan artikel baru.
+const blogRoutes: SitemapUrl[] = [
+    { loc: '/blog/main-this-or-that-2-bareng-teman', changefreq: 'monthly', priority: '0.6' },
 ]
 
 export default defineEventHandler((event) => {
@@ -31,7 +44,7 @@ export default defineEventHandler((event) => {
             priority: '0.9',
         }))
 
-    const body = [...staticRoutes, ...productRoutes]
+    const body = [...staticRoutes, ...productRoutes, ...blogRoutes]
         .map(
             (u) => `  <url>
     <loc>${SITE_URL}${u.loc}</loc>

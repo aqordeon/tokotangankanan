@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { SITE_URL } from '~/composables/useSiteEntity'
+
 useSeoMeta({
     title: 'FAQ - Pertanyaan yang Sering Diajukan',
     ogTitle: 'FAQ - Pertanyaan yang Sering Diajukan | Toko Tangan Kanan',
@@ -14,9 +16,17 @@ useHead({
 })
 
 const faqs = [
+    // Dua jawaban pertama sengaja dibuat definitif dan menyebut kategori produk
+    // secara eksplisit. Query "toko tangan kanan" ambigu di Google (ada brand
+    // lain dengan nama mirip di industri berbeda), dan jawaban berbentuk
+    // "X adalah Y yang menjual Z" inilah yang dikutip AI Overview.
     {
         question: 'Apa itu Toko Tangan Kanan?',
-        answer: 'Toko Tangan Kanan adalah toko yang menjual berbagai macam produk kartu permainan berkualitas tinggi, mulai dari kartu untuk nongkrong, kartu untuk pasangan, kartu untuk laki-laki, hingga kartu kuis untuk acara tertentu. Kami berkomitmen untuk hadir sebagai alat bantu membangun momen menyenangkan dan berkesan bagi semua kalangan.',
+        answer: 'Toko Tangan Kanan adalah brand permainan kartu percakapan (conversation card game) asal Indonesia. Kami merancang dan menjual kartu cetak berisi pertanyaan dan tantangan, seperti Deep, Hangout, This or That, Family 99, dan Badboy, yang dipakai untuk menemani momen nongkrong bareng teman, PDKT dengan pasangan, sampai kumpul keluarga.',
+    },
+    {
+        question: 'Toko Tangan Kanan menjual produk apa saja?',
+        answer: 'Seluruh produk kami berupa kartu permainan cetak, mulai dari kartu untuk nongkrong, kartu untuk pasangan, kartu untuk laki-laki, hingga kartu kuis untuk acara tertentu. Kami tidak menjual pakaian dan tidak melayani jasa konveksi. Semua varian dapat dilihat di halaman Semua Kartu.',
     },
     {
         question: 'Bagaimana cara membeli produk di Toko Tangan Kanan?',
@@ -57,6 +67,9 @@ const faqs = [
 ]
 
 // Structured data (JSON-LD): FAQPage — lets the Q&A appear as a rich result.
+// `about` + `isPartOf` menautkan Q&A ini ke node Organization di app.vue, jadi
+// Google membacanya sebagai keterangan resmi tentang entitas brand ini, bukan
+// sekadar daftar pertanyaan lepas.
 useHead({
     script: [
         {
@@ -64,6 +77,19 @@ useHead({
             innerHTML: JSON.stringify({
                 '@context': 'https://schema.org',
                 '@type': 'FAQPage',
+                '@id': `${SITE_URL}/faq#faqpage`,
+                url: `${SITE_URL}/faq`,
+                name: 'FAQ - Toko Tangan Kanan',
+                inLanguage: 'id-ID',
+                isPartOf: { '@id': `${SITE_URL}/#website` },
+                about: { '@id': `${SITE_URL}/#organization` },
+                breadcrumb: {
+                    '@type': 'BreadcrumbList',
+                    itemListElement: [
+                        { '@type': 'ListItem', position: 1, name: 'Beranda', item: SITE_URL },
+                        { '@type': 'ListItem', position: 2, name: 'FAQ', item: `${SITE_URL}/faq` },
+                    ],
+                },
                 mainEntity: faqs.map(faq => ({
                     '@type': 'Question',
                     name: faq.question,
