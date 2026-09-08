@@ -61,8 +61,11 @@ export const organizationJsonLd = {
     // menyebut brand lain, karena menyebutnya justru memperkuat asosiasi.
     disambiguatingDescription:
         'Brand permainan kartu (card game) dan toko online yang menjual kartu percakapan cetak. Bukan usaha konveksi maupun produsen pakaian.',
+    // Ber-@id supaya `Product.brand` di halaman kartu bisa menunjuk ke node yang
+    // sama, bukan membuat brand baru per halaman.
     brand: {
         '@type': 'Brand',
+        '@id': `${SITE_URL}/#brand`,
         name: 'Toko Tangan Kanan',
         logo: `${SITE_URL}/ttk_logo_1000.jpg`,
     },

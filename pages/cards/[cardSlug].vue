@@ -277,7 +277,9 @@ useSeoMeta({
 
 // --- Structured data (JSON-LD): Product + BreadcrumbList ---
 const SITE_URL = 'https://tokotangankanan.com'
-const SELLER_NAMES: Record<string, string> = {
+// Nama marketplace tempat penawaran dipasang. Ini BUKAN penjualnya — penjualnya
+// tetap Toko Tangan Kanan (lihat marketplaceOffers di bawah).
+const MARKETPLACE_NAMES: Record<string, string> = {
     shopee: 'Shopee',
     tiktokshop: 'TikTok Shop',
     tokopedia: 'Tokopedia',
@@ -295,16 +297,32 @@ const deckMeta = decks.find(d => d.slug === product?.slug) as
     | undefined
 const sku = deckMeta?.sku
 
+// `seller` menunjuk ke entitas Toko Tangan Kanan, bukan ke marketplace-nya.
+// Sebelumnya penjual tertulis "Shopee"/"Tokopedia", yang selain keliru secara
+// semantik juga membuang kesempatan: dengan versi ini setiap halaman produk
+// ikut menegaskan entitas brand yang sama, memakai @id yang dideklarasikan di
+// app.vue. `@type` dan `name` tetap ditulis lengkap supaya node ini tetap utuh
+// walau Google tidak menggabungkannya dengan graph di app.vue.
+//
+// Nama marketplace pindah ke `name`, jadi informasinya tidak hilang. Catatan:
+// marketplace umumnya melarang tautan keluar di deskripsi toko, jadi hubungan
+// situs -> toko marketplace memang hanya bisa dinyatakan dari sisi ini.
 const marketplaceOffers = Object.entries(product?.link_olshop ?? {})
     .filter(([, url]) => !!url)
     .map(([key, url]) => ({
         '@type': 'Offer',
+        name: `${product?.name ?? product?.title} di ${MARKETPLACE_NAMES[key] ?? key}`,
         url,
         priceCurrency: 'IDR',
         ...(product?.price ? { price: product.price } : {}),
         availability: 'https://schema.org/InStock',
         itemCondition: 'https://schema.org/NewCondition',
-        seller: { '@type': 'Organization', name: SELLER_NAMES[key] ?? key },
+        seller: {
+            '@type': 'Organization',
+            '@id': `${SITE_URL}/#organization`,
+            name: 'Toko Tangan Kanan',
+            url: SITE_URL,
+        },
     }))
 
 const productJsonLd = {
@@ -314,7 +332,7 @@ const productJsonLd = {
     description: product?.meta?.description,
     image: (product?.images ?? []).map(img => toAbsolute(img.src)),
     ...(sku ? { sku } : {}),
-    brand: { '@type': 'Brand', name: 'Toko Tangan Kanan' },
+    brand: { '@type': 'Brand', '@id': `${SITE_URL}/#brand`, name: 'Toko Tangan Kanan' },
     url: `${SITE_URL}${product?.href ?? '/'}`,
     // Only emit a rating when the product actually has one (see deckMeta above).
     ...(deckMeta?.rating && deckMeta?.rating_count
