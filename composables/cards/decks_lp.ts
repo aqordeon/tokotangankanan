@@ -193,7 +193,7 @@ export const useDecksLP = {
         title: `Kartu Family 99 - Game Ice Breaking Seru untuk Gathering dan Kumpul Keluarga`,
         meta: {
             title: 'Kartu Family 99 - Game Ice Breaking Seru',
-            description: 'Kartu Family 99 - ice breaking seru untuk kumpul keluarga & gathering. 99 pertanyaan yang bikin suasana cair dan semua generasi bisa ikut main! '
+            description: 'Kartu Family 99 - ice breaking seru untuk kumpul keluarga & gathering. 50 pertanyaan yang bikin suasana cair dan semua generasi bisa ikut main! '
         },
         slug: `family99`,
         price: 44000,
@@ -304,7 +304,7 @@ export const useDecksLP = {
         slug: `berani-gak`,
         // Harga belum dikonfirmasi — dibiarkan null supaya blok harga dan
         // schema.org Offer tidak tampil sampai angka aslinya diisi.
-        price: null,
+        price: 41000,
         description: null,
         descriptionComponent: ProductDescriptionBeraniGak,
         img_logo: '/images/logo/beranigak_logo.png',
