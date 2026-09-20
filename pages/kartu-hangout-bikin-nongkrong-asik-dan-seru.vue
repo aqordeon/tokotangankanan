@@ -11,6 +11,7 @@ const route = useRoute()
 
 /* ────────────────────────────────────────────────────────────────
    Landing page tujuan CTA iklan Meta (IG @tokotangankanan).
+   URL iklan: https://tokotangankanan.com/kartu-hangout-bikin-nongkrong-asik-dan-seru
 
    Halaman ini punya dua mode:
 
@@ -18,16 +19,16 @@ const route = useRoute()
       dengan isi paket, cara main, dan ulasan kartu itu sendiri.
       Di bawahnya baru muncul rekomendasi kartu lain.
 
-        /promo                → kartu default (DEFAULT_DECK)
-        /promo?deck=deep      → ganti kartu yang di-spotlight
+        /kartu-hangout-bikin-nongkrong-asik-dan-seru                → kartu default (DEFAULT_DECK)
+        /kartu-hangout-bikin-nongkrong-asik-dan-seru?deck=deep      → ganti kartu yang di-spotlight
 
    2. MODE KATALOG — semua kartu ditampilkan setara, buat iklan
       yang isinya brand/toko secara umum, bukan satu produk.
 
-        /promo?deck=all            → semua kartu, urutan best seller
-        /promo?deck=all&v=pasangan → semua kartu, angle couple
-        /promo?deck=all&v=nongkrong
-        /promo?deck=all&v=keluarga
+        /kartu-hangout-bikin-nongkrong-asik-dan-seru?deck=all            → semua kartu, urutan best seller
+        /kartu-hangout-bikin-nongkrong-asik-dan-seru?deck=all&v=pasangan → semua kartu, angle couple
+        /kartu-hangout-bikin-nongkrong-asik-dan-seru?deck=all&v=nongkrong
+        /kartu-hangout-bikin-nongkrong-asik-dan-seru?deck=all&v=keluarga
 
    UTM dari Ads Manager (utm_content / utm_campaign) ikut tercatat
    di analitik klik, jadi ketahuan iklan mana yang benar-benar jualan.
