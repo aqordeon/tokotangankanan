@@ -344,8 +344,15 @@ const adId = computed(() =>
 )
 const trackingPage = computed(() => (adId.value ? `promo:${adId.value}` : 'promo'))
 
-function pushDataLayer(payload: Record<string, unknown>) {
+/**
+ * Kirim event ke GTM. `onceKey` bikin event yang sama cuma dikirim sekali
+ * per sesi browser — kunci dan masa berlakunya sama persis dengan pencatatan
+ * klik di Supabase (lihat markTrackedOnce di composables/useTrackClick.ts),
+ * jadi angka di GTM dan di database nggak beda cerita.
+ */
+function pushDataLayer(payload: Record<string, unknown>, onceKey?: string) {
     if (!import.meta.client) return
+    if (onceKey && !markTrackedOnce(onceKey)) return
     const dl = (window as any).dataLayer
     if (dl) dl.push(payload)
 }
@@ -357,7 +364,7 @@ function onBuyClick(deckSlug: string, platform: string) {
         deck_slug: deckSlug,
         platform,
         ad_id: adId.value || null,
-    })
+    }, `gtm:click:${trackingPage.value}:${deckSlug}:${platform}`)
 }
 
 /* ── Bottom sheet pilih marketplace ──────────────────────────── */
@@ -372,7 +379,7 @@ function openSheet(deck: Deck, source = 'hero') {
         deck_slug: deck.slug,
         source,
         ad_id: adId.value || null,
-    })
+    }, `gtm:sheet:${trackingPage.value}:${deck.slug}:${source}`)
 }
 
 function closeSheet() {
