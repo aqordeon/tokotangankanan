@@ -55,12 +55,47 @@ const focusDeck = computed<Deck | null>(() => {
     return deckBySlug[raw] ?? deckBySlug[DEFAULT_DECK] ?? null
 })
 
+/* ── Penulisan nama produk ───────────────────────────────────────
+   Di halaman iklan ini "HANGOUT" ditulis kapital semua supaya kebaca
+   sebagai nama produk, bukan kata bahasa Inggris. Data produk
+   (useProduct / decks_lp / related) sengaja tidak diubah — halaman
+   lain tetap pakai penulisan aslinya. */
+function deckName(text: string) {
+    return text.replace(/\bHangout\b/g, 'HANGOUT')
+}
+
 function formatPrice(value: number | null | undefined) {
     if (!value) return null
     return `Rp${new Intl.NumberFormat('id-ID').format(value)}`
 }
 
-const focusPrice = computed(() => formatPrice(lpBySlug[focusDeck.value?.slug ?? '']?.price))
+/* ── Harga promo iklan ───────────────────────────────────────────
+   Selama kampanye berjalan, harga di halaman ini tampil coret:
+   dari harga normal `strike` turun ke `price`.
+   Promo selesai? Ganti PROMO jadi `null` — harga balik ke harga
+   katalog masing-masing kartu, tanpa coretan. */
+const PROMO: { price: number; strike: number } | null = { price: 36000, strike: 78000 }
+
+type PriceTag = { now: string; was: string | null; off: number | null }
+
+/** Harga yang ditampilkan: kalau promo aktif, harga normal jadi coretan. */
+function priceTag(value: number | null | undefined): PriceTag | null {
+    const base = formatPrice(value)
+    if (!base) return null
+    if (!PROMO) return { now: base, was: null, off: null }
+    return {
+        now: formatPrice(PROMO.price)!,
+        was: formatPrice(PROMO.strike),
+        off: Math.round((1 - PROMO.price / PROMO.strike) * 100),
+    }
+}
+
+/** Harga tiap kartu, siap dipakai di template. */
+const priceBySlug = computed(() => Object.fromEntries(
+    Object.values(lpBySlug).map(lp => [lp.slug, priceTag(lp.price)]),
+) as Record<string, PriceTag | null>)
+
+const focusPriceTag = computed(() => priceTag(lpBySlug[focusDeck.value?.slug ?? '']?.price))
 
 /* ── Copy per kartu ──────────────────────────────────────────────
    Kartu yang sedang diiklankan dapat copy khusus. Kartu lain pakai
@@ -71,7 +106,7 @@ type DeckCopy = {
     eyebrow: string
     headline: string
     sub: string
-    highlights: { icon: string; title: string; text: string }[]
+    highlights: { title: string; text: string }[]
     includes: string[]
     specs: { label: string; value: string }[]
     steps: { title: string; text: string }[]
@@ -85,24 +120,20 @@ const deckCopy: Record<string, DeckCopy> = {
         sub: '50 kartu pertanyaan ringan dan random yang bikin tongkrongan langsung hidup. Nggak personal, nggak bikin mikir berat — tinggal tarik, baca, ngakak.',
         highlights: [
             {
-                icon: '🎲',
                 title: 'Topiknya ringan & random',
                 text: 'Pengalaman, imajinasi, kehidupan sehari-hari. Nggak ada pertanyaan yang bikin canggung atau harus mikir keras.',
             },
             {
-                icon: '🙌',
                 title: 'Sama siapa aja bisa',
                 text: 'Teman lama, teman yang baru kenal, sampai stranger. Topiknya juga sering dipakai buat mecahin es di dating app.',
             },
             {
-                icon: '🎒',
                 title: 'Muat di tas mana pun',
                 text: 'Box-nya kecil dan ringan. Bisa dimainin di kafe, di mobil, atau di kosan jam dua pagi.',
             },
             {
-                icon: '🌐',
                 title: 'Dua bahasa sekaligus',
-                text: 'Tiap kartu punya versi Indonesia dan English, jadi aman kalau ada teman yang nggak bisa bahasa Indonesia.',
+                text: 'Tiap kartu punya versi Indonesia dan English, jadi bisa bermain sambil belajar bahasa inggris.',
             },
         ],
         includes: [
@@ -123,12 +154,12 @@ const deckCopy: Record<string, DeckCopy> = {
         ],
         faqs: [
             {
-                q: 'Isi Hangout ada berapa kartu?',
+                q: 'Isi HANGOUT ada berapa kartu?',
                 a: '50 kartu pertanyaan plus 1 kartu panduan bermain, semuanya dalam satu box.',
             },
             {
                 q: 'Pertanyaannya personal banget nggak?',
-                a: 'Nggak. Hangout sengaja dibuat ringan dan random, jadi aman dimainin bareng orang yang baru kenal. Kalau mau yang lebih dalam, seri Deep pilihannya.',
+                a: 'Nggak. HANGOUT sengaja dibuat ringan dan random, jadi aman dimainin bareng orang yang baru kenal. Kalau mau yang lebih dalam, seri Deep pilihannya.',
             },
         ],
     },
@@ -136,15 +167,15 @@ const deckCopy: Record<string, DeckCopy> = {
 
 /** Dipakai kartu tanpa copy khusus, dan oleh mode katalog. */
 const genericHighlights = [
-    { icon: '💬', title: 'Nggak perlu mikir topik', text: 'Tarik kartu, baca, jawab. Awkward silence selesai dalam 5 detik.' },
-    { icon: '🤝', title: 'Semua orang kebagian', text: 'Yang biasanya diam ikut cerita, karena pertanyaannya giliran — bukan rebutan.' },
-    { icon: '💧', title: 'Semi anti-air & tebal', text: 'Kena tumpahan kopi di meja nongkrong? Tinggal lap. Bukan kertas tipis yang gampang lecek.' },
-    { icon: '🎁', title: 'Aman jadi kado', text: 'Box-nya rapi, tinggal kasih. Cocok buat anniversary, ulang tahun, atau tukar kado.' },
+    { title: 'Nggak perlu mikir topik', text: 'Tarik kartu, baca, jawab. Awkward silence selesai dalam 5 detik.' },
+    { title: 'Semua orang kebagian', text: 'Yang biasanya diam ikut cerita, karena pertanyaannya giliran — bukan rebutan.' },
+    { title: 'Semi anti-air & tebal', text: 'Kena tumpahan kopi di meja nongkrong? Tinggal lap. Bukan kertas tipis yang gampang lecek.' },
+    { title: 'Aman jadi kado', text: 'Box-nya rapi, tinggal kasih. Cocok buat anniversary, ulang tahun, atau tukar kado.' },
 ]
 
 const fallbackCopy = (deck: Deck): DeckCopy => ({
     eyebrow: deck.is_topseller ? 'Salah satu kartu terlaris kami' : 'Kartu obrolan Toko Tangan Kanan',
-    headline: `Ngumpul bareng jadi seru dengan ${deck.title}.`,
+    headline: `Ngumpul bareng jadi seru dengan ${deckName(deck.title)}.`,
     sub: 'Satu dek kartu, puluhan pertanyaan siap pakai. Obrolan langsung jalan tanpa mikir mau bahas apa.',
     highlights: genericHighlights,
     includes: ['Satu dek kartu pertanyaan', '1 kartu panduan bermain', 'Box tempat kartu'],
@@ -274,7 +305,7 @@ const faqs = computed(() => {
         ...generalFaqs,
         {
             q: 'Bingung pilih yang mana?',
-            a: 'Buat pasangan, ambil Deep atau Love Sparks. Buat nongkrong bareng teman, Hangout atau This or That 2. Buat acara kumpul rame, Family 99.',
+            a: 'Buat pasangan, ambil Deep atau Love Sparks. Buat nongkrong bareng teman, HANGOUT atau This or That 2. Buat acara kumpul rame, Family 99.',
         },
     ]
 })
@@ -384,7 +415,7 @@ function primaryCta(source = 'hero') {
 }
 
 const primaryCtaLabel = computed(() =>
-    focusDeck.value ? `Beli ${focusDeck.value.title} sekarang` : 'Pilih kartumu',
+    focusDeck.value ? `Beli ${deckName(focusDeck.value.title)} sekarang` : 'Pilih kartumu',
 )
 
 /* ── Head ────────────────────────────────────────────────────── */
@@ -392,7 +423,7 @@ const primaryCtaLabel = computed(() =>
 useHead(() => {
     const deck = focusDeck.value
     const title = deck
-        ? `Kartu ${deck.title}`
+        ? `Kartu ${deckName(deck.title)}`
         : 'Kartu Obrolan — Biar Ngobrol Nggak Garing'
     const description = deck
         ? `${copy.value?.sub} Rating ${deck.rating}/5 dari ${deck.rating_count} ulasan. Tersedia di Shopee, TikTok Shop, Tokopedia, dan Lazada.`
@@ -463,7 +494,16 @@ useHead(() => {
                     </span>
                 </div>
 
-                <p v-if="focusPrice" class="mt-3 text-2xl font-extrabold text-white">{{ focusPrice }}</p>
+                <div v-if="focusPriceTag" class="mt-3 flex items-center justify-center gap-2.5">
+                    <span v-if="focusPriceTag.was" class="text-base font-semibold text-slate-500 line-through">
+                        {{ focusPriceTag.was }}
+                    </span>
+                    <span class="text-2xl font-extrabold text-white">{{ focusPriceTag.now }}</span>
+                    <span v-if="focusPriceTag.off"
+                          class="rounded-full bg-[#e5484d] px-2 py-[3px] text-[0.68rem] font-bold text-white">
+                        -{{ focusPriceTag.off }}%
+                    </span>
+                </div>
 
                 <!-- CTA utama -->
                 <button type="button" @click="primaryCta('hero')"
@@ -482,16 +522,13 @@ useHead(() => {
             <!-- ── Kenapa kartu ini ───────────────────────────── -->
             <section class="py-8 border-t border-white/[0.07]">
                 <h2 class="text-lg font-bold text-white text-center">
-                    {{ focusDeck ? `Kenapa ${focusDeck.title}?` : 'Bukan sekadar "kartu tanya-tanya"' }}
+                    {{ focusDeck ? `Kenapa ${deckName(focusDeck.title)}?` : 'Bukan sekadar "kartu tanya-tanya"' }}
                 </h2>
                 <div class="mt-5 flex flex-col gap-3">
                     <div v-for="item in (copy ? copy.highlights : genericHighlights)" :key="item.title"
-                         class="flex gap-3 items-start bg-white/[0.04] border border-white/[0.08] rounded-2xl p-4 backdrop-blur-md">
-                        <span class="text-xl leading-none mt-0.5" aria-hidden="true">{{ item.icon }}</span>
-                        <div>
-                            <h3 class="text-sm font-bold text-slate-100">{{ item.title }}</h3>
-                            <p class="mt-1 text-[0.82rem] leading-relaxed text-slate-400">{{ item.text }}</p>
-                        </div>
+                         class="bg-white/[0.04] border border-white/[0.08] rounded-2xl p-4 backdrop-blur-md">
+                        <h3 class="text-sm font-bold text-slate-100">{{ item.title }}</h3>
+                        <p class="mt-1 text-[0.82rem] leading-relaxed text-slate-400">{{ item.text }}</p>
                     </div>
                 </div>
             </section>
@@ -561,10 +598,14 @@ useHead(() => {
                              class="w-full aspect-[4/5] object-cover" />
 
                         <div class="flex flex-col flex-1 gap-1 p-3">
-                            <h3 class="text-sm font-bold text-slate-100 leading-tight">{{ deck.title }}</h3>
+                            <h3 class="text-sm font-bold text-slate-100 leading-tight">{{ deckName(deck.title) }}</h3>
                             <p class="text-[0.7rem] text-slate-500">★ {{ deck.rating }} · {{ deck.rating_count }} ulasan</p>
-                            <p v-if="formatPrice(lpBySlug[deck.slug]?.price)" class="text-sm font-bold text-white">
-                                {{ formatPrice(lpBySlug[deck.slug]?.price) }}
+                            <p v-if="priceBySlug[deck.slug]" class="flex items-baseline gap-1.5 text-sm font-bold text-white">
+                                <span v-if="priceBySlug[deck.slug]!.was"
+                                      class="text-[0.7rem] font-semibold text-slate-500 line-through">
+                                    {{ priceBySlug[deck.slug]!.was }}
+                                </span>
+                                {{ priceBySlug[deck.slug]!.now }}
                             </p>
 
                             <button type="button" @click="openSheet(deck, 'katalog')"
@@ -592,7 +633,7 @@ useHead(() => {
                         </span>
                         <blockquote class="text-[0.82rem] leading-relaxed text-slate-300">"{{ review.text }}"</blockquote>
                         <figcaption class="mt-auto text-[0.7rem] text-slate-500">
-                            {{ review.author }} · {{ review.deck }}
+                            {{ review.author }} · {{ deckName(review.deck) }}
                             <span v-if="review.date"> · {{ review.date }}</span>
                         </figcaption>
                     </figure>
@@ -604,16 +645,20 @@ useHead(() => {
             <section v-if="pairs.length" class="py-8 border-t border-white/[0.07]">
                 <div v-for="pair in pairs" :key="pair.slug"
                      class="bg-gradient-to-br from-[#008989]/15 to-transparent border border-[#008989]/25 rounded-2xl p-4 backdrop-blur-md">
-                    <p class="text-[0.68rem] font-bold uppercase tracking-[0.12em] text-[#00c9c9]">{{ pair.eyebrow }}</p>
+                    <p class="text-[0.68rem] font-bold uppercase tracking-[0.12em] text-[#00c9c9]">{{ deckName(pair.eyebrow) }}</p>
 
                     <div class="mt-3 flex gap-3.5 items-start">
                         <img :src="pair.deck.imageSrc" :alt="pair.deck.imageAlt" loading="lazy" decoding="async"
                              class="w-20 aspect-[4/5] object-cover rounded-xl shrink-0 shadow-[0_8px_20px_rgba(0,0,0,0.4)]" />
                         <div class="flex-1 min-w-0">
-                            <h2 class="text-[0.95rem] font-bold text-white leading-snug">{{ pair.headline }}</h2>
-                            <p class="mt-1.5 text-[0.8rem] leading-relaxed text-slate-400">{{ pair.body }}</p>
-                            <p v-if="formatPrice(pair.price)" class="mt-2 text-sm font-bold text-white">
-                                {{ formatPrice(pair.price) }}
+                            <h2 class="text-[0.95rem] font-bold text-white leading-snug">{{ deckName(pair.headline) }}</h2>
+                            <p class="mt-1.5 text-[0.8rem] leading-relaxed text-slate-400">{{ deckName(pair.body) }}</p>
+                            <p v-if="priceBySlug[pair.slug]" class="mt-2 flex items-baseline gap-1.5 text-sm font-bold text-white">
+                                <span v-if="priceBySlug[pair.slug]!.was"
+                                      class="text-[0.7rem] font-semibold text-slate-500 line-through">
+                                    {{ priceBySlug[pair.slug]!.was }}
+                                </span>
+                                {{ priceBySlug[pair.slug]!.now }}
                             </p>
                         </div>
                     </div>
@@ -622,7 +667,7 @@ useHead(() => {
                         <button v-if="deckBySlug[pair.slug]" type="button"
                                 @click="openSheet(deckBySlug[pair.slug], 'pair')"
                                 class="flex-1 rounded-xl bg-[#008989] px-4 py-2.5 text-[0.8rem] font-bold text-white transition-colors hover:bg-[#00a3a3] active:scale-[0.98]">
-                            Beli {{ pair.deck.title }}
+                            Beli {{ deckName(pair.deck.title) }}
                         </button>
                         <NuxtLink :href="pair.href" :target="pair.external ? '_blank' : undefined"
                                   :rel="pair.external ? 'noopener noreferrer' : undefined"
@@ -652,10 +697,14 @@ useHead(() => {
                              class="w-full aspect-[4/5] object-cover" />
 
                         <div class="flex flex-col flex-1 gap-1 p-3">
-                            <h3 class="text-sm font-bold text-slate-100 leading-tight">{{ deck.title }}</h3>
+                            <h3 class="text-sm font-bold text-slate-100 leading-tight">{{ deckName(deck.title) }}</h3>
                             <p class="text-[0.7rem] text-slate-500">★ {{ deck.rating }} · {{ deck.rating_count }} ulasan</p>
-                            <p v-if="formatPrice(lpBySlug[deck.slug]?.price)" class="text-sm font-bold text-white">
-                                {{ formatPrice(lpBySlug[deck.slug]?.price) }}
+                            <p v-if="priceBySlug[deck.slug]" class="flex items-baseline gap-1.5 text-sm font-bold text-white">
+                                <span v-if="priceBySlug[deck.slug]!.was"
+                                      class="text-[0.7rem] font-semibold text-slate-500 line-through">
+                                    {{ priceBySlug[deck.slug]!.was }}
+                                </span>
+                                {{ priceBySlug[deck.slug]!.now }}
                             </p>
 
                             <button type="button" @click="openSheet(deck, 'related')"
@@ -730,10 +779,13 @@ useHead(() => {
                          class="w-10 aspect-[4/5] object-cover rounded-md shrink-0" />
                     <div class="flex-1 min-w-0">
                         <p class="text-[0.78rem] font-bold text-slate-100 truncate">
-                            {{ focusDeck ? focusDeck.title : 'Kartu Toko Tangan Kanan' }}
+                            {{ focusDeck ? deckName(focusDeck.title) : 'Kartu Toko Tangan Kanan' }}
                         </p>
                         <p class="text-[0.68rem] text-slate-500">
-                            <template v-if="focusPrice">{{ focusPrice }} · </template>★
+                            <template v-if="focusPriceTag">
+                                <s v-if="focusPriceTag.was" class="text-slate-600">{{ focusPriceTag.was }}</s>
+                                <span class="font-bold text-[#00c9c9]">{{ focusPriceTag.now }}</span> ·
+                            </template>★
                             {{ focusDeck ? focusDeck.rating : avgRating }}
                             ({{ focusDeck ? focusDeck.rating_count : totalReviews }})
                         </p>
@@ -752,7 +804,7 @@ useHead(() => {
         </Transition>
         <Transition name="slide-up">
             <div v-if="sheetDeck" role="dialog" aria-modal="true"
-                 :aria-label="`Pilih toko untuk ${sheetDeck.title}`"
+                 :aria-label="`Pilih toko untuk ${deckName(sheetDeck.title)}`"
                  class="fixed bottom-0 inset-x-0 z-50 bg-[#11171f] border-t border-white/[0.1] rounded-t-3xl">
                 <div class="max-w-[560px] mx-auto px-5 pt-3 pb-[calc(1.5rem+env(safe-area-inset-bottom,0px))]">
                     <div class="mx-auto mb-4 h-1 w-10 rounded-full bg-white/20" aria-hidden="true" />
@@ -761,12 +813,16 @@ useHead(() => {
                         <img :src="sheetDeck.imageSrc" :alt="sheetDeck.imageAlt"
                              class="w-14 aspect-[4/5] object-cover rounded-lg shrink-0" />
                         <div class="flex-1 min-w-0">
-                            <h2 class="text-base font-bold text-white">{{ sheetDeck.title }}</h2>
+                            <h2 class="text-base font-bold text-white">{{ deckName(sheetDeck.title) }}</h2>
                             <p class="text-[0.72rem] text-slate-400">
                                 ★ {{ sheetDeck.rating }} · {{ sheetDeck.rating_count }} ulasan
                             </p>
-                            <p v-if="formatPrice(lpBySlug[sheetDeck.slug]?.price)" class="mt-0.5 text-sm font-bold text-white">
-                                {{ formatPrice(lpBySlug[sheetDeck.slug]?.price) }}
+                            <p v-if="priceBySlug[sheetDeck.slug]" class="mt-0.5 flex items-baseline gap-1.5 text-sm font-bold text-white">
+                                <span v-if="priceBySlug[sheetDeck.slug]!.was"
+                                      class="text-[0.72rem] font-semibold text-slate-500 line-through">
+                                    {{ priceBySlug[sheetDeck.slug]!.was }}
+                                </span>
+                                {{ priceBySlug[sheetDeck.slug]!.now }}
                             </p>
                         </div>
                         <button type="button" @click="closeSheet" aria-label="Tutup"
