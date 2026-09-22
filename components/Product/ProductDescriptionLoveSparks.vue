@@ -43,7 +43,7 @@ import KualitasKartu from './Description/KualitasKartu.vue';
         
         <KeutamaanKartu class="mt-4" />
 
-        <p class="mt-4">Jumlah pemain: 2-6 Orang</p>
+        <p class="mt-4">Jumlah pemain: 2 orang (khusus pasangan)</p>
 
         <KelengkapanKartu class="mt-4" :addStart="['50 kartu pertanyaan (versi Indonesia dan English)']" />
         <KualitasKartu class="mt-4" />
