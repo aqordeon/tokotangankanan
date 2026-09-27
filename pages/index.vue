@@ -47,6 +47,8 @@
 							</div>
 						</div>
 
+						<!-- Section: Love Timeline -->
+						<DashboardIndexLoveTimeline />
 
 						<!-- Section: Combo First Date -->
 						<div class="mt-12 w-full container lg:px-4">
