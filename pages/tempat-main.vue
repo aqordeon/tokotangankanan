@@ -21,14 +21,6 @@ useSeoMeta({
 // Daftar cafe/coffeeshop partner. Tambah entri baru di sini untuk memperbanyak list.
 // lat & lng dipakai untuk embed peta (tanpa perlu API key).
 const cafes = [
-    // {
-    //     name: 'SAGA Coffee Renon',
-    //     tagline: 'Listening Space',
-    //     area: 'Renon, Denpasar, Bali',
-    //     mapsUrl: 'https://maps.app.goo.gl/VMi6mv54KpeCWBuL8',
-    //     lat: -8.6739362,
-    //     lng: 115.2371049,
-    // },
     {
         name: 'Often Cafe and Space',
         // tagline: 'Listening Space',
@@ -36,6 +28,13 @@ const cafes = [
         mapsUrl: 'https://maps.app.goo.gl/uCLYNE53f1nU15cr6',
         lat: -8.3619087,
         lng: 114.1575636,
+    },
+    {
+        name: 'Loading Board Game Cafe',
+        area: 'Sesetan, Denpasar Selatan, Bali',
+        mapsUrl: 'https://maps.app.goo.gl/MZGRrdPEaCVseUY7A',
+        lat: -8.6861049,
+        lng: 115.2161174,
     },
 ]
 
