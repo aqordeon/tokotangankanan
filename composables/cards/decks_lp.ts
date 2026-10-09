@@ -201,6 +201,15 @@ export const useDecksLP = {
         descriptionComponent: ProductDescriptionF99,
         img_logo: '/images/logo/family99_logo.png',
         href: '/cards/family99',
+        model3d: {
+            texture: '/models/family99/packaging-art.webp',
+            cards: {
+                count: 50,
+                back: '/models/family99/card-back.webp',
+                fronts: ['/models/family99/card-front.webp'], // nanti isi 50 path, urut kartu 1–50
+            },
+            alt: 'Model 3D kemasan kartu Family 99 — putar dan buka tutupnya',
+        },
         images: [
             {
                 src: "/images/cards/family991-4x5.webp",

@@ -18,6 +18,13 @@
                     <!-- Image selector -->
                     <div class="mx-auto mt-6 hidden w-full max-w-2xl sm:block lg:max-w-none">
                         <TabList class="flex flex-wrap gap-y-4 gap-x-4 md:justify-between">
+                            <Tab v-if="product?.model3d"
+                                class="relative flex h-24 aspect-square cursor-pointer flex-col items-center justify-center gap-1 rounded-md bg-gray-50 text-sm font-semibold text-primary hover:bg-gray-100 focus:outline-none focus:ring focus:ring-primary/50 focus:ring-offset-4"
+                                v-slot="{ selected }">
+                                <CubeIcon class="size-7" aria-hidden="true" />
+                                <span>3D</span>
+                                <span :class="[selected ? 'ring-primary' : 'ring-transparent', 'pointer-events-none absolute inset-0 rounded-md ring-2 ring-offset-2']" aria-hidden="true" />
+                            </Tab>
                             <Tab v-for="image in product?.images" :key="image.src"
                                 class="relative flex h-24 aspect-square cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase  hover:bg-gray-50 focus:outline-none focus:ring focus:ring-primary/50 focus:ring-offset-4"
                                 v-slot="{ selected }">
@@ -33,6 +40,14 @@
                     </div>
 
                     <TabPanels>
+                        <TabPanel v-if="product?.model3d">
+                            <ClientOnly>
+                                <ProductPackaging3D :texture="product.model3d.texture" :cards="product.model3d.cards" :alt="product.model3d.alt" />
+                                <template #fallback>
+                                    <img :src="product?.images?.[0]?.src" :alt="product?.images?.[0]?.alt" width="800" height="800" class="aspect-square w-full object-cover sm:rounded-lg" />
+                                </template>
+                            </ClientOnly>
+                        </TabPanel>
                         <TabPanel v-for="(image, index) in product?.images" :key="image.src">
                             <img :src="image.src" :alt="image.alt" width="800" height="800" :loading="index === 0 ? 'eager' : 'lazy'" :fetchpriority="index === 0 ? 'high' : undefined" decoding="async" class="aspect-square w-full object-cover sm:rounded-lg" />
                         </TabPanel>
@@ -187,7 +202,7 @@ import {
     TabPanels,
 } from '@headlessui/vue'
 import { StarIcon } from '@heroicons/vue/20/solid'
-import { HeartIcon, MinusIcon, PlusIcon } from '@heroicons/vue/24/outline'
+import { CubeIcon, HeartIcon, MinusIcon, PlusIcon } from '@heroicons/vue/24/outline'
 import { useDecksLP } from '../../composables/cards/decks_lp'
 import { decks } from '../../composables/useProduct'
 
