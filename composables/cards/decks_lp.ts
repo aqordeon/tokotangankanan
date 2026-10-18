@@ -507,8 +507,7 @@ export const useDecksLP = {
             description: 'Kartu Reveal - lanjutan Deep, 50 pertanyaan untuk membuka sisi diri yang jarang terlihat. Untuk 2-4 orang terdekat. Bilingual ID/EN.'
         },
         slug: 'reveal',
-        // TODO: isi harga sebelum rilis. Selama kosong, harga & offers JSON-LD tidak tampil.
-        price: undefined,
+        price: 44000,
         description: null,
         descriptionComponent: ProductDescriptionReveal,
         href: '/cards/reveal',
