@@ -4,6 +4,7 @@ import ProductDescriptionDeep from "../../components/Product/ProductDescriptionD
 import ProductDescriptionF99 from "../../components/Product/ProductDescriptionF99.vue";
 import ProductDescriptionHangout from "../../components/Product/ProductDescriptionHangout.vue";
 import ProductDescriptionLoveSparks from "../../components/Product/ProductDescriptionLoveSparks.vue";
+import ProductDescriptionReveal from "../../components/Product/ProductDescriptionReveal.vue";
 import ProductDescriptionToT from "../../components/Product/ProductDescriptionToT.vue";
 import ProductDescriptionToT2 from "../../components/Product/ProductDescriptionToT2.vue";
 import { decks } from "../useProduct";
@@ -497,6 +498,26 @@ export const useDecksLP = {
                 alt: 'Screenshot ulasan kartu Love Sparks di Tiktok pembeli 2',
             },
         ],
+    },
+    reveal: {
+        name: 'Reveal',
+        title: 'Kartu Reveal - 50 Pertanyaan Deep Talk Lanjutan Deep untuk Orang Terdekat',
+        meta: {
+            title: 'Kartu Reveal - Lanjutan Kartu Deep',
+            description: 'Kartu Reveal - lanjutan Deep, 50 pertanyaan untuk membuka sisi diri yang jarang terlihat. Untuk 2-4 orang terdekat. Bilingual ID/EN.'
+        },
+        slug: 'reveal',
+        // TODO: isi harga sebelum rilis. Selama kosong, harga & offers JSON-LD tidak tampil.
+        price: undefined,
+        description: null,
+        descriptionComponent: ProductDescriptionReveal,
+        href: '/cards/reveal',
+        // TODO: tambahkan foto produk (lihat contoh di deep / love_sparks).
+        images: [],
+        link_olshop: getShopLinks('reveal'),
+        link_spotify: 'https://open.spotify.com/embed/playlist/7caFJ6Zync6bQzrrC9xvgI?utm_source=generator',
+        reviews: [],
+        review_images: [],
     },
     // xxx: {
     //     name: xxx,

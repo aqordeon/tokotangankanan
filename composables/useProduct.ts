@@ -151,6 +151,21 @@ export const decks = [
             // lazada: 'https://www.lazada.co.id/products/i8738900654.html',
         }
     },
+    {
+        slug: 'reveal',
+        has_landing_page: true,
+        title: 'Reveal',
+        sku: 'ttk-c-reveal-1',
+        // Varian baru: rating sengaja dikosongkan sampai ada ulasan asli dari marketplace.
+        // TODO: upload gambar ke public/images/cards/reveal1-4x5.webp
+        imageSrc: '/images/cards/reveal1-4x5.webp',
+        imageAlt: "Card variant Reveal",
+        tags: ['deep talk', 'relationship'],
+        is_topseller: false,
+        occasion: ['deep talk', 'relationship'],
+        // TODO: isi link marketplace saat produk sudah tayang.
+        link_online_shop: {},
+    },
 ]
 
 export const decksTopSellers = decks.filter(deck => deck.is_topseller)

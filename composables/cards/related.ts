@@ -54,6 +54,13 @@ export const deckPairs: Record<string, DeckPair[]> = {
     ],
     deep: [
         {
+            slug: 'reveal',
+            eyebrow: 'Serinya berlanjut',
+            headline: 'Sudah main Deep? Lanjut ke Reveal',
+            body: '50 pertanyaan baru yang membawa obrolan selangkah lebih dalam: membuka sisi diri yang jarang terlihat, bahkan oleh orang terdekat.',
+            cta: 'Lihat Reveal',
+        },
+        {
             slug: 'hangout',
             eyebrow: 'Buat suasana yang lebih santai',
             headline: 'Belum siap deep talk? Mulai dari Hangout',
@@ -66,6 +73,15 @@ export const deckPairs: Record<string, DeckPair[]> = {
             headline: 'Main bareng pasangan? Ada Love Sparks',
             body: 'Ditulis khusus untuk pasangan: pertanyaannya lebih hangat dan personal, lengkap dengan playlist Spotify sendiri buat nemenin sesinya.',
             cta: 'Lihat Love Sparks',
+        },
+    ],
+    reveal: [
+        {
+            slug: 'deep',
+            eyebrow: 'Ada seri pertamanya',
+            headline: 'Belum punya Deep? Mulai dari seri pertamanya',
+            body: 'Reveal adalah lanjutan dari Deep. Deep mengajak saling mengenal lewat cerita hidup, sebelum Reveal membuka sisi yang lebih tersembunyi.',
+            cta: 'Lihat Deep',
         },
     ],
     hangout: [
