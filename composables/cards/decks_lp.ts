@@ -511,6 +511,7 @@ export const useDecksLP = {
         description: null,
         descriptionComponent: ProductDescriptionReveal,
         href: '/cards/reveal',
+        img_logo: '/images/logo/reveal_logo.png',
         images: [
             {
                 src: "/images/cards/reveal1-4x5.webp",
