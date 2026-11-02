@@ -511,8 +511,16 @@ export const useDecksLP = {
         description: null,
         descriptionComponent: ProductDescriptionReveal,
         href: '/cards/reveal',
-        // TODO: tambahkan foto produk (lihat contoh di deep / love_sparks).
-        images: [],
+        images: [
+            {
+                src: "/images/cards/reveal1-4x5.webp",
+                alt: "Kemasan kartu Reveal berwarna hijau beserta contoh kartu pertanyaan - lanjutan kartu Deep untuk membuka sisi diri yang jarang terlihat"
+            },
+            {
+                src: "/images/cards/reveal-cards-1.webp",
+                alt: "Tumpukan kartu Reveal dan contoh kartu pertanyaan - deep talk lanjutan untuk orang terdekat"
+            },
+        ],
         link_olshop: getShopLinks('reveal'),
         link_spotify: 'https://open.spotify.com/embed/playlist/7caFJ6Zync6bQzrrC9xvgI?utm_source=generator',
         reviews: [],

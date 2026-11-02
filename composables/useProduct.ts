@@ -157,7 +157,6 @@ export const decks = [
         title: 'Reveal',
         sku: 'ttk-c-reveal-1',
         // Varian baru: rating sengaja dikosongkan sampai ada ulasan asli dari marketplace.
-        // TODO: upload gambar ke public/images/cards/reveal1-4x5.webp
         imageSrc: '/images/cards/reveal1-4x5.webp',
         imageAlt: "Card variant Reveal",
         tags: ['deep talk', 'relationship'],
