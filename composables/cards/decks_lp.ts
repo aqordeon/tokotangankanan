@@ -236,6 +236,26 @@ export const useDecksLP = {
                 src: "/images/cards/family991-4x5.webp",
                 alt: "Kemasan kartu Family 99 beserta contoh kartu pertanyaan - permainan ice breaking seru untuk kumpul keluarga dan gathering semua generasi"
             },
+            {
+                src: "/images/cards/family99-cards-1.webp",
+                alt: "Kemasan kartu Family 99 ungu dengan kartu pertanyaan berisi 5 jawaban teratas dan skornya"
+            },
+            {
+                src: "/images/cards/family99-cards-2.webp",
+                alt: "Sisi belakang dan depan kartu Family 99 - pertanyaan survei bilingual dengan 5 jawaban dan skor"
+            },
+            {
+                src: "/images/cards/family99-cards-3.webp",
+                alt: "Tumpukan kartu Family 99 untuk kumpul keluarga, lomba team, dan ice breaking acara"
+            },
+            {
+                src: "/images/cards/family99-cards-4.webp",
+                alt: "Tiga sisi kartu Family 99: belakang kartu, depan kartu berisi pertanyaan, dan kartu panduan bermain"
+            },
+            {
+                src: "/images/cards/family99-cards-5.webp",
+                alt: "Cara main Family 99: 50 pertanyaan, 5 jawaban teratas per kartu, skor 1-40, tim dengan skor terbanyak menang"
+            },
         ],
         link_olshop: getShopLinks('family99'),
         link_spotify: `https://open.spotify.com/embed/playlist/4ymDR3ICyNFqVyko16ZRqa?utm_source=generator`,
