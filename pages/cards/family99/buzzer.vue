@@ -32,6 +32,11 @@ import { ref, computed, onMounted, onUnmounted } from 'vue'
 import Horn from '~/assets/audio/horn.mp3'
 import Wrong from '~/assets/audio/wrong.mp3'
 
+// Halaman alat main, bukan konten: jangan diindex Google.
+useHead({
+    meta: [{ name: 'robots', content: 'noindex, follow' }],
+})
+
 definePageMeta({
     layout: ''
 })

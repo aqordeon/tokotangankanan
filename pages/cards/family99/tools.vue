@@ -18,6 +18,11 @@ const param_timer = ref(route.query.timer || 7)
 const param_warning = ref(route.query.warning || 3)
 console.log(param_timer.value, param_warning.value)
 
+// Halaman alat main, bukan konten: jangan diindex Google.
+useHead({
+    meta: [{ name: 'robots', content: 'noindex, follow' }],
+})
+
 definePageMeta({
     layout: ''
 })
