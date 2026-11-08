@@ -364,6 +364,14 @@ export const useDecksLP = {
                 src: "/images/cards/bg1-4x5.webp",
                 alt: "Kemasan kartu Berani Gak? beserta contoh kartu tantangan - permainan truth and dare dalam satu kartu untuk nongkrong bareng teman"
             },
+            {
+                src: "/images/cards/bg-cards-1.webp",
+                alt: "Kartu tantangan Berani Gak? bersandar pada tumpukan kartu kuning - Been there, Dare that"
+            },
+            {
+                src: "/images/cards/bg-cards-2.webp",
+                alt: "Tiga sisi kartu Berani Gak?: belakang kartu kuning, depan kartu berisi tantangan, dan kartu panduan bermain"
+            },
         ],
         link_olshop: getShopLinks('berani-gak'),
         link_spotify: null,
