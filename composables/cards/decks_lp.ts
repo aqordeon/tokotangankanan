@@ -33,10 +33,6 @@ export const useDecksLP = {
                 alt: "Kemasan kartu Deep beserta contoh momen - permainan deep talk untuk pasangan dan sahabat yang ingin saling mengenal lebih dalam"
             },
             {
-                src: "/images/cards/deep1-4x5.webp",
-                alt: "Kemasan kartu Deep beserta contoh kartu pertanyaan - permainan deep talk untuk pasangan dan sahabat yang ingin saling mengenal lebih dalam"
-            },
-            {
                 src: "/images/cards/deep-cards-2.webp",
                 alt: "Kemasan kartu Deep premium packaging - permainan deep talk untuk pasangan dan sahabat yang ingin saling mengenal lebih dalam"
             },
