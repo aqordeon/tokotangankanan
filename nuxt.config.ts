@@ -84,6 +84,12 @@ export default defineNuxtConfig({
         }
     },
     css: ['~/assets/stylesheet/index.scss'],
+    // CSS jadi file eksternal (bisa di-cache), bukan <style> inline ~330 KB di
+    // awal <head>. Crawler preview link (WhatsApp, dll) hanya membaca awal HTML,
+    // jadi tag og:* harus muncul dekat atas.
+    features: {
+        inlineStyles: false,
+    },
     postcss: {
         plugins: {
             tailwindcss: {},
@@ -95,7 +101,13 @@ export default defineNuxtConfig({
         '@primevue/nuxt-module',
         '@nuxtjs/supabase',
     ],
+    // Hanya Popover yang dipakai (HeaderTTK.vue, import eksplisit). Tanpa ini
+    // modul me-register semua komponen dan menyuntik ~440 KB CSS tema ke <head>.
     primevue: {
+        autoImport: false,
+        components: {
+            include: ['Popover'],
+        },
         options: {
             theme: {
                 preset: Noir,

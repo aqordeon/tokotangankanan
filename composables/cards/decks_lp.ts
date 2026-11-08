@@ -19,7 +19,7 @@ export const useDecksLP = {
         title: `Kartu Deep - 50 Pertanyaan Deep Talk untuk Pasangan dan Sahabat`,
         meta: {
             title: 'Kartu Deep - Deep Talk Game',
-            description: 'Kartu Deep - 50 pertanyaan deep talk untuk saling mengenal lebih dalam. Cocok untuk pasangan & sahabat. Semi anti-air, bilingual ID/EN. Mulai ngobrol lebih bermakna!'
+            description: 'Kartu Deep - 50 pertanyaan deep talk untuk saling mengenal lebih dalam. Cocok untuk pasangan & sahabat. Semi anti-air, bilingual ID/EN.'
         },
         slug: 'deep',
         price: 43000,

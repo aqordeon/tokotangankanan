@@ -7,8 +7,8 @@ import { useDecksLP } from '../composables/cards/decks_lp'
 const SITE_URL = 'https://tokotangankanan.com'
 
 useSeoMeta({
-    title: 'Tentang Kami - Cerita di Balik Toko Tangan Kanan',
-    ogTitle: 'Tentang Kami - Cerita di Balik Toko Tangan Kanan | Toko Tangan Kanan',
+    title: 'Tentang Kami: Brand Kartu Percakapan Lokal',
+    ogTitle: 'Tentang Kami: Brand Kartu Percakapan Lokal | Toko Tangan Kanan',
     description: 'Kenali Toko Tangan Kanan: brand permainan kartu untuk nongkrong, pasangan, dan keluarga. Cerita, nilai, dan alasan di balik setiap varian kartu yang kami buat.',
     ogDescription: 'Kenali Toko Tangan Kanan: brand permainan kartu untuk nongkrong, pasangan, dan keluarga. Cerita, nilai, dan alasan di balik setiap varian kartu yang kami buat.',
     ogImage: `${SITE_URL}/ttk_logo_1000.jpg`,

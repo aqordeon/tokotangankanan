@@ -306,7 +306,13 @@ useSeoMeta({
     ogTitle: () => product?.meta?.title ?? 'Kartu Permainan Toko Tangan Kanan',
     description: () => product.meta?.description ?? 'Kartu permainan seru dari Toko Tangan Kanan',
     ogDescription: () => product.meta?.description ?? 'Kartu permainan seru dari Toko Tangan Kanan',
-    ogImage: () => product?.images?.[0]?.src?.startsWith('http') ? product.images[0].src : `https://tokotangankanan.com${product?.images?.[0]?.src ?? '/ttk_logo_1000.jpg'}`,
+    // JPG 1200x1200 khusus share (public/images/og/<slug>.jpg). Preview link
+    // WhatsApp tidak andal membaca WebP, jadi og:image jangan pakai .webp.
+    ogImage: () => `https://tokotangankanan.com/images/og/${product.slug}.jpg`,
+    ogImageType: 'image/jpeg',
+    ogImageWidth: 1200,
+    ogImageHeight: 1200,
+    ogImageAlt: () => product?.images?.[0]?.alt ?? product?.name,
     ogUrl: () => `https://tokotangankanan.com${product?.href ?? '/'}`,
     twitterCard: 'summary_large_image',
 })

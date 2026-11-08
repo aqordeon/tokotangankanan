@@ -118,9 +118,9 @@ function toggleAll() {
     <div class="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8 lg:py-40">
         <div class="mx-auto max-w-4xl">
             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                <h2 class="text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
+                <h1 class="text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
                     Pertanyaan yang Sering Diajukan
-                </h2>
+                </h1>
                 <button
                     @click="toggleAll"
                     class="shrink-0 self-start sm:self-center inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm transition hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"

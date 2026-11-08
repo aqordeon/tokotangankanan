@@ -6,8 +6,8 @@ const SITE_URL = 'https://tokotangankanan.com'
 const posts = [...blogPosts].sort((a, b) => b.date.localeCompare(a.date))
 
 useSeoMeta({
-    title: 'Blog - Cerita, Tips, dan Cara Main Kartu Toko Tangan Kanan',
-    ogTitle: 'Blog - Cerita, Tips, dan Cara Main Kartu Toko Tangan Kanan | Toko Tangan Kanan',
+    title: 'Blog: Tips dan Cerita Main Kartu',
+    ogTitle: 'Blog: Tips dan Cerita Main Kartu | Toko Tangan Kanan',
     description: 'Cerita main, tips, dan panduan seputar permainan kartu Toko Tangan Kanan. Dari nongkrong bareng teman sampai momen bareng pasangan dan keluarga.',
     ogDescription: 'Cerita main, tips, dan panduan seputar permainan kartu Toko Tangan Kanan. Dari nongkrong bareng teman sampai momen bareng pasangan dan keluarga.',
     ogImage: `${SITE_URL}/ttk_logo_1000.jpg`,

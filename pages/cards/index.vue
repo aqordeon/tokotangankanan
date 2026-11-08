@@ -8,9 +8,9 @@ import ProductOnSmallGrid from '../../components/Products/ProductOnSmallGrid.vue
 const products = decks.filter(deck => useDecksLP[deck.slug])
 
 useSeoMeta({
-    title: 'Semua Kartu - Koleksi Permainan Kartu Toko Tangan Kanan',
-    ogTitle: 'Semua Kartu - Koleksi Permainan Kartu Toko Tangan Kanan',
-    description: 'Jelajahi semua varian kartu Toko Tangan Kanan: Deep, Hangout, This or That, Family 99, Badboy, Love Sparks, dan lainnya. Cocok untuk nongkrong, pasangan, dan keluarga.',
+    title: 'Semua Kartu Permainan Percakapan',
+    ogTitle: 'Semua Kartu Permainan Percakapan | Toko Tangan Kanan',
+    description: 'Semua varian kartu Toko Tangan Kanan: Deep, Hangout, This or That, Family 99, Badboy, Love Sparks, Reveal, dll. Untuk nongkrong, pasangan, dan keluarga.',
     ogDescription: 'Jelajahi semua varian kartu Toko Tangan Kanan: Deep, Hangout, This or That, Family 99, Badboy, Love Sparks, dan lainnya. Cocok untuk nongkrong, pasangan, dan keluarga.',
     ogImage: 'https://tokotangankanan.com/ttk_logo_1000.jpg',
     ogUrl: 'https://tokotangankanan.com/cards',

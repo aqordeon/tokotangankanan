@@ -9,8 +9,8 @@ const SITE_URL = 'https://tokotangankanan.com'
 const WHATSAPP_NUMBER = ''
 
 useSeoMeta({
-    title: 'Tempat Main - Cafe yang Sediakan Kartu Toko Tangan Kanan',
-    ogTitle: 'Tempat Main - Cafe yang Sediakan Kartu Toko Tangan Kanan | Toko Tangan Kanan',
+    title: 'Tempat Main: Cafe yang Sediakan Kartu Kami',
+    ogTitle: 'Tempat Main: Cafe yang Sediakan Kartu Kami | Toko Tangan Kanan',
     description: 'Daftar cafe dan coffeeshop yang menyediakan kartu Toko Tangan Kanan. Datang, ambil kartunya, dan bebas mencobanya bareng teman sambil nongkrong.',
     ogDescription: 'Daftar cafe dan coffeeshop yang menyediakan kartu Toko Tangan Kanan. Datang, ambil kartunya, dan bebas mencobanya bareng teman sambil nongkrong.',
     ogImage: `${SITE_URL}/ttk_logo_1000.jpg`,
