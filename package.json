@@ -25,7 +25,6 @@
     "@primevue/forms": "^4.3.9",
     "@primevue/themes": "^4.3.9",
     "primevue": "^4.3.6",
-    "rgb-hex": "^4.1.0",
     "sass": "^1.60.0",
     "string-to-color": "^2.2.2",
     "three": "^0.186.1"
