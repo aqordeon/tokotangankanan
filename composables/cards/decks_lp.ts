@@ -90,6 +90,18 @@ export const useDecksLP = {
                 src: "/images/cards/hangout1-4x5.webp",
                 alt: "Kemasan kartu Hangout berwarna oranye beserta contoh kartu pertanyaan - permainan nongkrong seru untuk teman dan sahabat"
             },
+            {
+                src: "/images/cards/hangout-cards-1.webp",
+                alt: "Kartu pertanyaan Hangout bersandar pada tumpukan kartu oranye - pertanyaan bilingual Indonesia dan Inggris"
+            },
+            {
+                src: "/images/cards/hangout-cards-2.webp",
+                alt: "Sisi belakang kartu Hangout oranye dan sisi depan berisi pertanyaan bilingual"
+            },
+            {
+                src: "/images/cards/hangout-cards-3.webp",
+                alt: "Tiga sisi kartu Hangout: belakang kartu oranye, depan kartu berisi pertanyaan, dan kartu panduan bermain"
+            },
             // { src: "https://lh3.googleusercontent.com/rd-d/ALs6j_GN2mt1tqZHyoMin8aZ3Xc1CxKgpS_xbfsQ3urG0b0jHFLynNY2uKxlmyv2II9xWMbieeselBrO3dqVYES2eC1uLLDm_YuazPvsyxqYUWx1lnKpKO2FkDgpuQTpyJeD393sToiMzyFcRCY0Zotw0IRw2GynD2-PppS84nIokRYpR-35leCIYbysEzg8uKKTgvnqie-4PzsM8LcZV0PlRUsxUTiCDPChPnv_gPW7MpFXPi8xkqNt-eU6MXQAUgiLDTn8LiIClvlcjg97oL2_oCjdCLmOWtShOd-D6TmcyT38SaHwPacuY3qpfLirbDLxewfvd9WBCWD6sRE8CWF9SBh62geMkdKIwW6jQS4-JK8Z7fEHOD9hIfXaYOzEIQo5-XEzVfYwoxGrpXCSI5XjNSrAzH0gKUEmLCN4fG4PhldQ60OWCvouGgZPzKZ9zqlhvVHyG1LEexWHw999SDAD7r2ehKtDDeSiVCHY2IzcbhFTQR8V46E0AbTwEwonTAWNrZX7CLk-Evk_ZqJMgyDdPBYyDaVEH3y7FwHAJbhVTjl_44LwMvoJpQUeRSq7fSJGoWo4VXbVygKqfgQM_1dDMJEvZOWl5UTVQiUOgnp_FFk2wSzs8WZp1SffjQ9GR990cRGS7u0-42GE8HFtoMEqanDMrDe4nmR5Qx1IpUeXslvoTp7S1nH7-I54Goxoypcc0lq1Z6kbptz07y1KxSTUuYNqRI7pMqpVALsWF1_ao0U4JT7nIxkxgglL5YFPacqFP7-gqsQp0PIQKvY98V7hhC3aVnRdqWbG1nzkBeTdTyWR1WfNWRUZB-Wd22VSVDrmycBV3XS4bxch3CQtuxLDrfAa4ZbI60eU_Ht_MoGNNjfZ765sndK4sTNme-Unu_cevIfxF337mnt7iMo0U6NRzdCE0t6sA-XWk6hWjAjDIgXNxbprgFUQX9EgfkBP43wPNkIeu6cYguvJwdd2LuiBrDb-vpcKouYVhauv65RiApcZdR_g-iZ7VvAfQg54WCMf83CkkPFHYcsw9mU8CffLN5n0EiDWFvTV7E95PqLOtVXBjvDq2ufM1hSwegQP8r7WFHYTuA1uTpeZwucMr8tFa9PaSZZix4st3kzrEp6ZrXGl4QXgimE84e6cWgrWLku4uXfdUlGDwTTKR_RqjUOCyOI4c64H0i8IR52isqd7d8wcUgZ1FoDsTOSYTOkH79_L16O24Kkym0XuOEUnZAMvmvcATn3_iXl8=w1920-h878",
             // alt: "Review Kartu Hangout"
             // },
