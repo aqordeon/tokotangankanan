@@ -514,20 +514,12 @@ export const useDecksLP = {
         img_logo: '/images/logo/reveal_logo.png',
         images: [
             {
-                src: "/images/cards/reveal1-4x5.webp",
-                alt: "Kemasan kartu Reveal berwarna hijau beserta contoh kartu pertanyaan - lanjutan kartu Deep untuk membuka sisi diri yang jarang terlihat"
-            },
-            {
-                src: "/images/cards/reveal-cards-1.webp",
-                alt: "Tumpukan kartu Reveal dan contoh kartu pertanyaan - deep talk lanjutan untuk orang terdekat"
-            },
-            {
                 src: "/images/cards/reveal-cards-2.webp",
                 alt: "Kemasan kartu Reveal hijau terbuka dengan kartu belakang dan kartu pertanyaan di sampingnya"
             },
             {
-                src: "/images/cards/reveal-cards-3.webp",
-                alt: "Kartu pertanyaan Reveal bersandar pada tumpukan kartu hijau - pertanyaan bilingual Indonesia dan Inggris"
+                src: "/images/cards/reveal-cards-1.webp",
+                alt: "Tumpukan kartu Reveal dan contoh kartu pertanyaan - deep talk lanjutan untuk orang terdekat"
             },
             {
                 src: "/images/cards/reveal-cards-4.webp",
