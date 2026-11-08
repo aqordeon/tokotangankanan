@@ -521,6 +521,22 @@ export const useDecksLP = {
                 src: "/images/cards/reveal-cards-1.webp",
                 alt: "Tumpukan kartu Reveal dan contoh kartu pertanyaan - deep talk lanjutan untuk orang terdekat"
             },
+            {
+                src: "/images/cards/reveal-cards-2.webp",
+                alt: "Kemasan kartu Reveal hijau terbuka dengan kartu belakang dan kartu pertanyaan di sampingnya"
+            },
+            {
+                src: "/images/cards/reveal-cards-3.webp",
+                alt: "Kartu pertanyaan Reveal bersandar pada tumpukan kartu hijau - pertanyaan bilingual Indonesia dan Inggris"
+            },
+            {
+                src: "/images/cards/reveal-cards-4.webp",
+                alt: "Tiga sisi kartu Reveal: belakang kartu hijau, depan kartu berisi pertanyaan, dan kartu panduan bermain"
+            },
+            {
+                src: "/images/cards/reveal-cards-5.webp",
+                alt: "Kemasan premium kartu Reveal yang semi waterproof"
+            },
         ],
         link_olshop: getShopLinks('reveal'),
         link_spotify: 'https://open.spotify.com/embed/playlist/7caFJ6Zync6bQzrrC9xvgI?utm_source=generator',
