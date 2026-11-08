@@ -25,12 +25,12 @@ definePageMeta({
 const countdown = ref(param_timer.value)
 let interval: number | undefined
 
-const audio_wrong = new Audio(Wrong)
-const audio_timeout = new Audio(Timeout)
-const audio_success = new Audio(Success)
-const audio_horn = new Audio(Horn)
-const audio_tick = new Audio(Tick)
-const audio_intense_tick = new Audio(IntenseTick)
+const audio_wrong = typeof Audio !== "undefined" ? new Audio(Wrong) : undefined
+const audio_timeout = typeof Audio !== "undefined" ? new Audio(Timeout) : undefined
+const audio_success = typeof Audio !== "undefined" ? new Audio(Success) : undefined
+const audio_horn = typeof Audio !== "undefined" ? new Audio(Horn) : undefined
+const audio_tick = typeof Audio !== "undefined" ? new Audio(Tick) : undefined
+const audio_intense_tick = typeof Audio !== "undefined" ? new Audio(IntenseTick) : undefined
 
 // audio_wrong.volume = 0.8
 
@@ -42,19 +42,19 @@ const startCountdown = () => {
         if (countdown.value == param_warning.value) {
             setTimeout(() => {
                 audio_intense_tick.currentTime = 0;
-                audio_intense_tick.play()
+                audio_intense_tick?.play()
             }, 140)
         }
 
         if (countdown.value >= 1) {
             audio_tick.currentTime = 0;
-            audio_tick.play()
+            audio_tick?.play()
         } else {
             console.log('23232')
             clearInterval(interval)
-            audio_intense_tick.pause()
+            audio_intense_tick?.pause()
             interval = undefined
-            audio_timeout.play()
+            audio_timeout?.play()
         }
     }, 1000)
 }
@@ -75,7 +75,7 @@ const onClickWrong = () => {
     setTimeout(() => {
         isWrong.value = false
     }, 5000)
-    audio_wrong.play()
+    audio_wrong?.play()
 }
 
 const isCorrect = ref(false)
@@ -85,17 +85,17 @@ const onClickCorrect = () => {
     setTimeout(() => {
         isCorrect.value = false
     }, 5000)
-    audio_success.play()
+    audio_success?.play()
 }
 
 const onClickHornWrong = () => {
     audio_timeout.currentTime = 0;
-    audio_timeout.play()
+    audio_timeout?.play()
 }
 
 const onClickHornParty = () => {
     audio_horn.currentTime = 0;
-    audio_horn.play()
+    audio_horn?.play()
 }
 
 const onClickChangeCountdown = () => {
