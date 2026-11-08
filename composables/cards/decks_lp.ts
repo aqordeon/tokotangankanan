@@ -450,6 +450,22 @@ export const useDecksLP = {
                 alt: "Kemasan kartu This or That 2 beserta contoh kartu pilihan - versi upgrade dengan konteks lebih dalam untuk diskusi seru bersama teman"
             },
             {
+                src: "/images/cards/tot2-cards-1.webp",
+                alt: "Kemasan kartu This or That 2 dengan kartu pilihan berkonteks - Simple Choices Define You, Untold Reasons Reveal You"
+            },
+            {
+                src: "/images/cards/tot2-cards-2.webp",
+                alt: "Kartu pilihan This or That 2 bersandar pada tumpukan kartu pink-tosca - full context, decision, unexpected"
+            },
+            {
+                src: "/images/cards/tot2-cards-3.webp",
+                alt: "Tampak belakang kemasan dan kartu This or That 2"
+            },
+            {
+                src: "/images/cards/tot2-cards-4.webp",
+                alt: "Tiga sisi kartu This or That 2: belakang kartu, depan kartu berisi pilihan berkonteks, dan kartu panduan bermain"
+            },
+            {
                 src: "/images/cards/tot-cards-2.webp",
                 alt: "Perbandingan kartu This or That dan This or That 2: pilihan tanpa konteks vs pilihan dengan konteks yang sudah ditentukan"
             },
