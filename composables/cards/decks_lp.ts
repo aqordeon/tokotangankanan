@@ -536,15 +536,15 @@ export const useDecksLP = {
                 alt: "Kemasan kartu Love Sparks beserta contoh kartu pertanyaan - permainan untuk pasangan yang ingin mempererat koneksi emosional"
             },
             {
-                src: "/images/cards/love_sparks_1.jpg",
+                src: "/images/cards/love_sparks_1.webp",
                 alt: "Tiga sisi kartu Love Sparks: depan berisi pertanyaan bilingual, belakang motif hati pink, dan kartu panduan cara bermain"
             },
             {
-                src: "/images/cards/love_sparks_2.jpg",
+                src: "/images/cards/love_sparks_2.webp",
                 alt: "Playlist Spotify khusus Love Sparks di smartphone untuk menemani sesi bermain kartu pasangan dengan suasana musik yang pas"
             },
             {
-                src: "/images/cards/love_sparks_3.jpg",
+                src: "/images/cards/love_sparks_3.webp",
                 alt: "Kemasan kartu Love Sparks berwarna pink dengan contoh kartu pertanyaan – cocok untuk pasangan yang ingin mempererat koneksi emosional"
             },
             {
