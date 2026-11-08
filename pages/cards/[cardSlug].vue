@@ -1,8 +1,8 @@
 <template>
     <div class="bg-white">
         <div class="mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-16 lg:max-w-4xl xl:max-w-6xl lg:px-8">
-            <!-- Breadcrumb -->
-            <nav class="mb-8 text-sm" aria-label="Breadcrumb">
+            <!-- Breadcrumb + prev/next variant -->
+            <nav class="mb-8 flex flex-wrap items-center justify-between gap-x-4 gap-y-3 text-sm" aria-label="Breadcrumb">
                 <ol class="flex flex-wrap items-center gap-x-2 text-gray-500">
                     <li><NuxtLink to="/" class="hover:text-primary">Beranda</NuxtLink></li>
                     <li aria-hidden="true" class="text-gray-300">/</li>
@@ -10,6 +10,17 @@
                     <li aria-hidden="true" class="text-gray-300">/</li>
                     <li class="font-medium text-gray-700" aria-current="page">{{ product?.name }}</li>
                 </ol>
+                <div v-if="prevDeck && nextDeck" class="-mx-2 flex items-center gap-x-1 text-gray-500">
+                    <NuxtLink :to="prevDeck.href" rel="prev" class="flex items-center gap-x-1 rounded-md px-2 py-1 hover:bg-gray-50 hover:text-primary">
+                        <ChevronLeftIcon class="size-4" aria-hidden="true" />
+                        <span class="sr-only">Varian sebelumnya: </span>{{ prevDeck.name }}
+                    </NuxtLink>
+                    <span aria-hidden="true" class="text-gray-300">|</span>
+                    <NuxtLink :to="nextDeck.href" rel="next" class="flex items-center gap-x-1 rounded-md px-2 py-1 hover:bg-gray-50 hover:text-primary">
+                        <span class="sr-only">Varian berikutnya: </span>{{ nextDeck.name }}
+                        <ChevronRightIcon class="size-4" aria-hidden="true" />
+                    </NuxtLink>
+                </div>
             </nav>
 
             <div class="lg:grid lg:grid-cols-7 lg:items-start lg:gap-x-8 mb-10">
@@ -201,7 +212,7 @@ import {
     TabPanel,
     TabPanels,
 } from '@headlessui/vue'
-import { StarIcon } from '@heroicons/vue/20/solid'
+import { ChevronLeftIcon, ChevronRightIcon, StarIcon } from '@heroicons/vue/20/solid'
 import { CubeIcon, HeartIcon, MinusIcon, PlusIcon } from '@heroicons/vue/24/outline'
 import { useDecksLP } from '../../composables/cards/decks_lp'
 import { decks } from '../../composables/useProduct'
@@ -271,6 +282,16 @@ if (!product) {
         fatal: true,
     })
 }
+
+// Prev/next variant, same order as /cards. Wraps around: last -> first, first -> last.
+const lpDecks = decks.filter(d => useDecksLP[d.slug])
+const deckIndex = lpDecks.findIndex(d => d.slug === product.slug)
+const deckAt = (i: number) => {
+    const lp = useDecksLP[lpDecks[(i + lpDecks.length) % lpDecks.length].slug]
+    return { name: lp.name, href: lp.href }
+}
+const prevDeck = deckIndex >= 0 && lpDecks.length > 1 ? deckAt(deckIndex - 1) : null
+const nextDeck = deckIndex >= 0 && lpDecks.length > 1 ? deckAt(deckIndex + 1) : null
 
 const formattedPrice = product?.price
     ? new Intl.NumberFormat('id-ID', {
