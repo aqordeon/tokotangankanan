@@ -389,6 +389,22 @@ export const useDecksLP = {
                 src: "/images/cards/badboy1-4x5.webp",
                 alt: "Kemasan kartu Badboy beserta contoh kartu pertanyaan - permainan nongkrong jujur dan berani khusus untuk sirkel cowok"
             },
+            {
+                src: "/images/cards/badboy-cards-1.webp",
+                alt: "Kemasan kartu Badboy merah dengan kartu pertanyaan bilingual di depannya"
+            },
+            {
+                src: "/images/cards/badboy-cards-2.webp",
+                alt: "Kemasan dan tumpukan kartu Badboy - untuk bongkar dosa, adu nakal, dan sharing pengalaman bersama sirkel"
+            },
+            {
+                src: "/images/cards/badboy-cards-3.webp",
+                alt: "Dua tumpukan kartu Badboy: sisi belakang merah dan sisi depan berisi pertanyaan"
+            },
+            {
+                src: "/images/cards/badboy-cards-4.webp",
+                alt: "Tiga sisi kartu Badboy: belakang kartu merah, depan kartu berisi pertanyaan, dan kartu panduan bermain"
+            },
         ],
         link_olshop: getShopLinks('badboy'),
         link_spotify: "https://open.spotify.com/embed/playlist/2JPq7VVKrJVEbnj1tNH2ha?utm_source=generator",
