@@ -405,6 +405,10 @@ export const useDecksLP = {
                 src: "/images/cards/tot21-4x5.webp",
                 alt: "Kemasan kartu This or That 2 beserta contoh kartu pilihan - versi upgrade dengan konteks lebih dalam untuk diskusi seru bersama teman"
             },
+            {
+                src: "/images/cards/tot-cards-2.webp",
+                alt: "Perbandingan kartu This or That dan This or That 2: pilihan tanpa konteks vs pilihan dengan konteks yang sudah ditentukan"
+            },
         ],
         link_olshop: getShopLinks('tot-2'),
         link_spotify: null,
