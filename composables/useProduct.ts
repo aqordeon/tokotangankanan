@@ -162,8 +162,11 @@ export const decks = [
         tags: ['deep talk', 'relationship'],
         is_topseller: false,
         occasion: ['deep talk', 'relationship'],
-        // TODO: isi link marketplace saat produk sudah tayang.
-        link_online_shop: {},
+        link_online_shop: {
+            shopee: 'https://shopee.co.id/product/73180818/55819436405/',
+            tiktokshop: 'https://shop-id.tokopedia.com/view/product/1738444581715412685',
+            tokopedia: 'https://www.tokopedia.com/tokotangankanan/kartu-reveal-untuk-deep-talk-card-game-lanjutan-varian-deep-pertanyaan-sahabat-pasangan-teman-dekat-1738444581715412685',
+        },
     },
 ]
 
